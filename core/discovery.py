@@ -1,5 +1,4 @@
 import os
-import json
 
 from core import (
     build_causal_skeleton,
