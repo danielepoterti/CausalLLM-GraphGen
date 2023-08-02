@@ -1,12 +1,9 @@
 import os
 
-from core import (
-    build_causal_skeleton,
-    explore_parents_graphs,
-    get_all_direct_graphs,
-    graphs_independence_analysis,
-    draw_all_graphs
-)
+from core.build_causal_skeleton import build_causal_skeleton
+from core.causal_graphs_tests import explore_parents_graphs, graphs_independence_analysis
+from core.llm_causal_inference import get_all_direct_graphs
+from core.utils import draw_all_graphs
 
 
 def get_graphs(df, descriptions, immutable_features, domain, 
@@ -39,20 +36,20 @@ def get_graphs(df, descriptions, immutable_features, domain,
 
     draw_all_graphs(result, results_dir, "skeleton")
 
-    result = get_all_direct_graphs(
-        result, descriptions, immutable_features, domain=domain,
-        result_dir=results_dir, classification_node=classification_variable,
-        model=model
-    )
+    # result = get_all_direct_graphs(
+    #     result, descriptions, immutable_features, domain=domain,
+    #     result_dir=results_dir, classification_node=classification_variable,
+    #     model=model
+    # )
 
-    result = graphs_independence_analysis(
-        result, df, descriptions, immutable_features, modelLLM=model,
-        domain=domain, classification_variable=classification_variable,
-        result_dir=results_dir
-    )
+    # result = graphs_independence_analysis(
+    #     result, df, descriptions, immutable_features, modelLLM=model,
+    #     domain=domain, classification_variable=classification_variable,
+    #     result_dir=results_dir
+    # )
 
-    draw_all_graphs(result, results_dir, "directed")
+    # draw_all_graphs(result, results_dir, "directed")
 
-    explore_parents_graphs(classification_variable, result, df, results_dir)
+    # explore_parents_graphs(classification_variable, result, df, results_dir)
 
     return result
