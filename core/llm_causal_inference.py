@@ -169,9 +169,7 @@ def _append_text_to_file(file_path, source_node, destination_node, domain,
     text_to_append = (
         f"U node: {source_node}\n"
         f"V node: {destination_node}\n"
-        f"{prompt_single.format(domain=domain, a_node=source_node, b_node=destination_node, 
-                                a_description=descriptions[source_node], 
-                                b_description=descriptions[destination_node])}\n"
+        f"{prompt_single.format(domain=domain, a_node=source_node, b_node=destination_node, a_description=descriptions[source_node], b_description=descriptions[destination_node])}\n"
         "LLM RESPONSE:\n"
         f"{result}\n"
         f"{'-' * 10}\n"
@@ -181,6 +179,7 @@ def _append_text_to_file(file_path, source_node, destination_node, domain,
 
     with open(file_path, 'a') as file:
         file.write(text_to_append)
+
 
 
 
@@ -208,18 +207,18 @@ def get_direct_graph(skeleton, descriptions, immutable_features, domain, file_pa
         raise ValueError("Error: Missing description for one or more nodes.")
 
     single_template = (
-        """You are a helpful assistant to a {domain} expert.\n"""
-        """Which of the following counterfactual scenarios is plausible?"""
-        """You must select one option, the most probable.\n"""
-        """A. If an individual's {a_node} ({a_description}) was different, """
-        """could it bring about a change in their {b_node} ({b_description})?\n"""
-        """B. If an individual's {b_node} ({b_description}) was different, """
-        """could it bring about a change in their {a_node} ({a_description})?\n"""
-        """C. None of the above. The scenarios presented are not plausible.\n\n"""
-        """Let's think step-by-step to make sure that we have the right answer and write the explanations.\n\n"""
-        """Then provide your final answer within the tags, <Answer>A/B/C</Answer>."""
-    )
-
+                            """You are a helpful assistant to a {domain} expert.\n"""
+                            """Which of the following counterfactual scenarios is plausible?"""
+                            """You must select one option, the most probable.\n"""
+                            """A. If the value of {a_node} ({a_description}) was altered, """
+                            """could it lead to a change in the value of {b_node} ({b_description})?\n"""
+                            """B. If the value of {b_node} ({b_description}) was altered, """
+                            """could it lead to a change in the value of {a_node} ({a_description})?\n"""
+                            """C. None of the above. The scenarios presented are not plausible.\n\n"""
+                            """Let's think step-by-step to make sure that we have the right answer and write the explanations.\n\n"""
+                            """Then provide your final answer within the tags, <Answer>A/B/C</Answer>."""
+                        )
+    
     prompt_single = PromptTemplate(
         template=single_template,
         input_variables=["domain", "a_node", "a_description", "b_node", "b_description"]

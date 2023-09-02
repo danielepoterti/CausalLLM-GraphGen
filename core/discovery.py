@@ -36,20 +36,20 @@ def get_graphs(df, descriptions, immutable_features, domain,
 
     draw_all_graphs(result, results_dir, "skeleton")
 
-    # result = get_all_direct_graphs(
-    #     result, descriptions, immutable_features, domain=domain,
-    #     result_dir=results_dir, classification_node=classification_variable,
-    #     model=model
-    # )
+    result = get_all_direct_graphs(
+        result, descriptions, immutable_features, domain=domain,
+        result_dir=results_dir, classification_node=classification_variable,
+        model=model
+    )
 
-    # result = graphs_independence_analysis(
-    #     result, df, descriptions, immutable_features, modelLLM=model,
-    #     domain=domain, classification_variable=classification_variable,
-    #     result_dir=results_dir
-    # )
+    result = graphs_independence_analysis(
+        result, df, descriptions, immutable_features, model_llm=model,
+        domain=domain, classification_variable=classification_variable,
+        result_dir=results_dir
+    )
 
-    # draw_all_graphs(result, results_dir, "directed")
+    draw_all_graphs(result, results_dir, "directed")
 
-    # explore_parents_graphs(classification_variable, result, df, results_dir)
+    explore_parents_graphs(classification_variable, result, df, results_dir)
 
     return result
