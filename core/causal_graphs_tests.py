@@ -651,6 +651,17 @@ def estimate_and_refute(model, identified_estimand, method_name, file_path):
         print(estimate)
 
         refute_estimate_pipe(model, identified_estimand, estimate, file_path)
+
+        sign_title = "*" * 5 + " TEST COVARIATE SIGNIFICANCE " + "*" * 5
+        with open(file_path, 'a') as file:
+            file.write(sign_title + "\n")
+    
+        print(sign_title)
+
+        with open(file_path, 'a') as file:
+            file.write("p-value: " + str(estimate.test_stat_significance()["p_value"][0]) + "\n")
+
+        print("p-value: " + str(estimate.test_stat_significance()["p_value"][0]))
     
     except Exception as e:
         print(f"An error occurred while running the {method_name} estimation and refutation: {e}")

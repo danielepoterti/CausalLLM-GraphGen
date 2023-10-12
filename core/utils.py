@@ -12,22 +12,13 @@ def draw_graph(graph, title="", output_dir=".", graph_type=""):
         output_dir: Directory to save the graph, default is current directory.
         graph_type: Type of the graph, default is an empty string.
     """
-    plt.figure(figsize=(25,25))
-    pos = nx.spring_layout(graph)  # positions for all nodes
+    pos = nx.spring_layout(graph, seed=42)  # positions for all nodes
 
-    # nodes
-    nx.draw_networkx_nodes(graph, pos, node_size=700)
+    plt.figure(figsize=(8,6))
 
-    # edges
-    nx.draw_networkx_edges(graph, pos, width=2)
-
-    # labels
-    nx.draw_networkx_labels(graph, pos, font_size=20, font_family="sans-serif")
-
-    plt.title(title)
+    nx.draw(graph, pos, with_labels=True, node_size=2000, node_color='lightblue', font_size=10, font_color='black', edgecolors='black', linewidths=1, width=2, edge_color='gray', connectionstyle='arc3,rad=0.1')
     
-    # ensure the output directory exists
-    os.makedirs(output_dir, exist_ok=True)
+    plt.title('Causal Graph', fontdict={'size': 16})
     
     # save the figure to a PNG file in the output directory
     plt.savefig(os.path.join(output_dir, f"{title}_{graph_type}.png"))

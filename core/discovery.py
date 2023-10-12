@@ -32,7 +32,7 @@ def get_graphs(df, descriptions, immutable_features, domain,
 
     skeleton = build_causal_skeleton(df)
 
-    result = {'pc': skeleton["pc"]}
+    result = {'pc': skeleton["pc"]} #use skeleton for all 4 algorithms
 
     draw_all_graphs(result, results_dir, "skeleton")
 
