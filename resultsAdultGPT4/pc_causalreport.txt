@@ -1,0 +1,1517 @@
+******************************************************************************************
+ethnicity ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                 
+────────────(E[income])
+d[ethnicity]           
+Estimand assumption 1, Unconfoundedness: If U→{ethnicity} and U→income then P(income|ethnicity,,U) = P(income|ethnicity,)
+
+## Realized estimand
+b: income~ethnicity+ethnicity*age+ethnicity*gender+ethnicity*native-country+ethnicity*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.027918633292219636
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.027918633292219636
+New effect:0.027921182830713702
+p value:0.84
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.027918633292219636
+New effect:-0.0001364929501595699
+p value:0.98
+
+Refute: Use a subset of data
+Estimated effect:0.027918633292219636
+New effect:0.027860565857925634
+p value:0.96
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 9.136124919708168e-38
+******************************************************************************************
+occupation ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+      d                                                                       
+─────────────(E[income|relationship,marital-status,education,workclass,gender]
+d[occupation]                                                                 
+
+ 
+)
+ 
+Estimand assumption 1, Unconfoundedness: If U→{occupation} and U→income then P(income|occupation,relationship,marital-status,education,workclass,gender,U) = P(income|occupation,relationship,marital-status,education,workclass,gender)
+
+## Realized estimand
+b: income~occupation+relationship+marital-status+education+workclass+gender
+Target units: ate
+
+## Estimate
+Mean value: 0.0026540308361722165
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.0026540308361722165
+New effect:0.002653876656869717
+p value:0.98
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.0026540308361722165
+New effect:-2.0708852021574244e-05
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:0.0026540308361722165
+New effect:0.002624037438551268
+p value:0.8999999999999999
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 1.1399517390290297e-08
+******************************************************************************************
+marital-status ---> occupation
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                           
+─────────────────(E[occupation|age])
+d[marital-status]                   
+Estimand assumption 1, Unconfoundedness: If U→{marital-status} and U→occupation then P(occupation|marital-status,age,U) = P(occupation|marital-status,age)
+
+## Realized estimand
+b: occupation~marital-status+age+marital-status*education+marital-status*gender+marital-status*native-country+marital-status*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: 0.09181491536607744
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.09181491536607744
+New effect:0.09182204013737984
+p value:0.88
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.09181491536607744
+New effect:5.00701709228224e-06
+p value:0.94
+
+Refute: Use a subset of data
+Estimated effect:0.09181491536607744
+New effect:0.09190804337722032
+p value:0.98
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.012934764439298571
+******************************************************************************************
+age ---> marital-status
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                      
+──────(E[marital-status])
+d[age]                   
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→marital-status then P(marital-status|age,,U) = P(marital-status|age,)
+
+## Realized estimand
+b: marital-status~age
+Target units: ate
+
+## Estimate
+Mean value: -0.030833918503311075
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.030833918503311075
+New effect:-0.030833992360174513
+p value:0.98
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.030833918503311075
+New effect:6.90854364071658e-05
+p value:0.92
+
+Refute: Use a subset of data
+Estimated effect:-0.030833918503311075
+New effect:-0.030878132997453994
+p value:0.78
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.0
+******************************************************************************************
+workclass ---> occupation
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                                  
+────────────(E[occupation|marital-status,age,education])
+d[workclass]                                            
+Estimand assumption 1, Unconfoundedness: If U→{workclass} and U→occupation then P(occupation|workclass,marital-status,age,education,U) = P(occupation|workclass,marital-status,age,education)
+
+## Realized estimand
+b: occupation~workclass+marital-status+age+education+workclass*gender
+Target units: ate
+
+## Estimate
+Mean value: 0.05497879014333673
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.05497879014333673
+New effect:0.05497531863575636
+p value:0.8600000000000001
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.05497879014333673
+New effect:-0.0021082246004238848
+p value:0.98
+
+Refute: Use a subset of data
+Estimated effect:0.05497879014333673
+New effect:0.05457109158079004
+p value:0.8999999999999999
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.0015296336783160367
+******************************************************************************************
+education ---> workclass
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                        
+────────────(E[workclass|age])
+d[education]                  
+Estimand assumption 1, Unconfoundedness: If U→{education} and U→workclass then P(workclass|education,age,U) = P(workclass|education,age)
+
+## Realized estimand
+b: workclass~education+age+education*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.006233631137906759
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.006233631137906759
+New effect:0.006233137685335648
+p value:0.98
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.006233631137906759
+New effect:0.0001659107430745399
+p value:0.92
+
+Refute: Use a subset of data
+Estimated effect:0.006233631137906759
+New effect:0.006237754159991602
+p value:0.98
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 9.903852952328616e-06
+*************** iv.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: iv
+Estimand expression:
+ ⎡                                                                            
+ ⎢             d                          ⎛             d                     
+E⎢────────────────────────────(workclass)⋅⎜────────────────────────────([educa
+ ⎣d[native-country  ethnicity]            ⎝d[native-country  ethnicity]       
+
+       -1⎤
+      ⎞  ⎥
+tion])⎟  ⎥
+      ⎠  ⎦
+Estimand assumption 1, As-if-random: If U→→workclass then ¬(U →→{native-country,ethnicity})
+Estimand assumption 2, Exclusion: If we remove {native-country,ethnicity}→{education}, then ¬({native-country,ethnicity}→workclass)
+
+## Realized estimand
+b: workclass~education+age+education*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.006233631137906759
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.006233631137906759
+New effect:0.006233631137906759
+p value:2.0
+
+Refute: Use a subset of data
+Estimated effect:0.006233631137906759
+New effect:0.0061591118280387965
+p value:0.8600000000000001
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 9.903852952328616e-06
+******************************************************************************************
+native-country ---> education
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                      
+─────────────────(E[education])
+d[native-country]              
+Estimand assumption 1, Unconfoundedness: If U→{native-country} and U→education then P(education|native-country,,U) = P(education|native-country,)
+
+## Realized estimand
+b: education~native-country+native-country*age+native-country*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: 0.04871166995802767
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.04871166995802767
+New effect:0.048712320708540646
+p value:0.96
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.04871166995802767
+New effect:7.349516122964416e-05
+p value:0.98
+
+Refute: Use a subset of data
+Estimated effect:0.04871166995802767
+New effect:0.04875410030994473
+p value:0.92
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 2.03770027498804e-36
+******************************************************************************************
+age ---> education
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                 
+──────(E[education])
+d[age]              
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→education then P(education|age,,U) = P(education|age,)
+
+## Realized estimand
+b: education~age+age*native-country+age*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: -0.003257783990875396
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.003257783990875396
+New effect:-0.00325753299260402
+p value:1.0
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.003257783990875396
+New effect:8.0151545592404e-05
+p value:0.92
+
+Refute: Use a subset of data
+Estimated effect:-0.003257783990875396
+New effect:-0.003275544122200689
+p value:0.96
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 1.732452223643064e-82
+******************************************************************************************
+ethnicity ---> education
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                    
+────────────(E[education])
+d[ethnicity]              
+Estimand assumption 1, Unconfoundedness: If U→{ethnicity} and U→education then P(education|ethnicity,,U) = P(education|ethnicity,)
+
+## Realized estimand
+b: education~ethnicity+ethnicity*age+ethnicity*native-country
+Target units: ate
+
+## Estimate
+Mean value: 0.0765468671615217
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.0765468671615217
+New effect:0.0765537273523844
+p value:0.94
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.0765468671615217
+New effect:0.0014642432196855992
+p value:0.9
+
+Refute: Use a subset of data
+Estimated effect:0.0765468671615217
+New effect:0.07687352911842982
+p value:0.94
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 3.838556877031494e-58
+******************************************************************************************
+age ---> workclass
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                 
+──────(E[workclass])
+d[age]              
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→workclass then P(workclass|age,,U) = P(workclass|age,)
+
+## Realized estimand
+b: workclass~age+age*native-country+age*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: 0.0060808472314690665
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.0060808472314690665
+New effect:0.0060809397260577144
+p value:0.98
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.0060808472314690665
+New effect:9.648839315694602e-06
+p value:0.9
+
+Refute: Use a subset of data
+Estimated effect:0.0060808472314690665
+New effect:0.006080654590657284
+p value:0.98
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.4037098746120009
+******************************************************************************************
+marital-status ---> workclass
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                          
+─────────────────(E[workclass|age])
+d[marital-status]                  
+Estimand assumption 1, Unconfoundedness: If U→{marital-status} and U→workclass then P(workclass|marital-status,age,U) = P(workclass|marital-status,age)
+
+## Realized estimand
+b: workclass~marital-status+age+marital-status*education+marital-status*native-country+marital-status*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: -0.0037079167585605255
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.0037079167585605255
+New effect:-0.0037084462549628093
+p value:0.96
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.0037079167585605255
+New effect:-0.00034413943915518886
+p value:0.8799999999999999
+
+Refute: Use a subset of data
+Estimated effect:-0.0037079167585605255
+New effect:-0.00361657203934735
+p value:0.86
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 7.119564689415459e-12
+******************************************************************************************
+relationship ---> occupation
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+       d                                                                
+───────────────(E[occupation|marital-status,education,workclass,gender])
+d[relationship]                                                         
+Estimand assumption 1, Unconfoundedness: If U→{relationship} and U→occupation then P(occupation|relationship,marital-status,education,workclass,gender,U) = P(occupation|relationship,marital-status,education,workclass,gender)
+
+## Realized estimand
+b: occupation~relationship+marital-status+education+workclass+gender
+Target units: ate
+
+## Estimate
+Mean value: -0.06848506812860222
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.06848506812860222
+New effect:-0.06848460485407867
+p value:0.96
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.06848506812860222
+New effect:0.0011140865904388786
+p value:0.94
+
+Refute: Use a subset of data
+Estimated effect:-0.06848506812860222
+New effect:-0.06797464817685758
+p value:0.98
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 3.307075060592724e-06
+******************************************************************************************
+hours-per-week ---> relationship
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                                                                     
+─────────────────(E[relationship|marital-status,ethnicity,age,education,workcl
+d[hours-per-week]                                                             
+
+     
+ass])
+     
+Estimand assumption 1, Unconfoundedness: If U→{hours-per-week} and U→relationship then P(relationship|hours-per-week,marital-status,ethnicity,age,education,workclass,U) = P(relationship|hours-per-week,marital-status,ethnicity,age,education,workclass)
+
+## Realized estimand
+b: relationship~hours-per-week+marital-status+ethnicity+age+education+workclass+hours-per-week*gender
+Target units: ate
+
+## Estimate
+Mean value: -0.01389351851734455
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.01389351851734455
+New effect:-0.013893963567332865
+p value:0.94
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.01389351851734455
+New effect:1.3287900932508201e-05
+p value:0.98
+
+Refute: Use a subset of data
+Estimated effect:-0.01389351851734455
+New effect:-0.013897154168775811
+p value:0.9
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 2.6506397523019147e-161
+******************************************************************************************
+marital-status ---> hours-per-week
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                               
+─────────────────(E[hours-per-week|age])
+d[marital-status]                       
+Estimand assumption 1, Unconfoundedness: If U→{marital-status} and U→hours-per-week then P(hours-per-week|marital-status,age,U) = P(hours-per-week|marital-status,age)
+
+## Realized estimand
+b: hours-per-week~marital-status+age+marital-status*education+marital-status*native-country+marital-status*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: -1.2770730047724896
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-1.2770730047724896
+New effect:-1.277099070781552
+p value:0.8400000000000001
+
+Refute: Use a Placebo Treatment
+Estimated effect:-1.2770730047724896
+New effect:0.00033280519567597367
+p value:0.94
+
+Refute: Use a subset of data
+Estimated effect:-1.2770730047724896
+New effect:-1.2749582520293736
+p value:0.76
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 1.9233390432043334e-65
+******************************************************************************************
+workclass ---> hours-per-week
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                                      
+────────────(E[hours-per-week|marital-status,age,education])
+d[workclass]                                                
+Estimand assumption 1, Unconfoundedness: If U→{workclass} and U→hours-per-week then P(hours-per-week|workclass,marital-status,age,education,U) = P(hours-per-week|workclass,marital-status,age,education)
+
+## Realized estimand
+b: hours-per-week~workclass+marital-status+age+education
+Target units: ate
+
+## Estimate
+Mean value: 0.4955557455753308
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.4955557455753308
+New effect:0.4955552799602152
+p value:0.96
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.4955557455753308
+New effect:-0.001147018876230419
+p value:0.94
+
+Refute: Use a subset of data
+Estimated effect:0.4955557455753308
+New effect:0.4957051753834605
+p value:0.9199999999999999
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 1.0224425707463172e-17
+******************************************************************************************
+education ---> hours-per-week
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                       
+────────────(E[hours-per-week|age,ethnicity])
+d[education]                                 
+Estimand assumption 1, Unconfoundedness: If U→{education} and U→hours-per-week then P(hours-per-week|education,age,ethnicity,U) = P(hours-per-week|education,age,ethnicity)
+
+## Realized estimand
+b: hours-per-week~education+age+ethnicity+education*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.36634213891106526
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.36634213891106526
+New effect:0.3663475922305043
+p value:0.9
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.36634213891106526
+New effect:7.532334294651832e-05
+p value:0.94
+
+Refute: Use a subset of data
+Estimated effect:0.36634213891106526
+New effect:0.365689318961049
+p value:0.94
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 3.729528787080809e-229
+*************** iv.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: iv
+Estimand expression:
+ ⎡                                                                  -1⎤
+ ⎢        d                         ⎛        d                     ⎞  ⎥
+E⎢─────────────────(hours-per-week)⋅⎜─────────────────([education])⎟  ⎥
+ ⎣d[native-country]                 ⎝d[native-country]             ⎠  ⎦
+Estimand assumption 1, As-if-random: If U→→hours-per-week then ¬(U →→{native-country})
+Estimand assumption 2, Exclusion: If we remove {native-country}→{education}, then ¬({native-country}→hours-per-week)
+
+## Realized estimand
+b: hours-per-week~education+age+ethnicity+education*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.36634213891106526
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.36634213891106526
+New effect:0.36634213891106526
+p value:2.0
+
+Refute: Use a subset of data
+Estimated effect:0.36634213891106526
+New effect:0.3667397346689418
+p value:0.94
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 3.729528787080809e-229
+******************************************************************************************
+ethnicity ---> hours-per-week
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                         
+────────────(E[hours-per-week])
+d[ethnicity]                   
+Estimand assumption 1, Unconfoundedness: If U→{ethnicity} and U→hours-per-week then P(hours-per-week|ethnicity,,U) = P(hours-per-week|ethnicity,)
+
+## Realized estimand
+b: hours-per-week~ethnicity+ethnicity*age+ethnicity*native-country+ethnicity*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.5386854641627963
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.5386854641627963
+New effect:0.5386754124619418
+p value:0.88
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.5386854641627963
+New effect:-0.010575979490360723
+p value:0.8999999999999999
+
+Refute: Use a subset of data
+Estimated effect:0.5386854641627963
+New effect:0.5408275625696553
+p value:0.94
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 9.036435866894657e-13
+******************************************************************************************
+age ---> hours-per-week
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                      
+──────(E[hours-per-week])
+d[age]                   
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→hours-per-week then P(hours-per-week|age,,U) = P(hours-per-week|age,)
+
+## Realized estimand
+b: hours-per-week~age+age*native-country+age*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: 0.09128669223389352
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.09128669223389352
+New effect:0.09128627544868145
+p value:0.9199999999999999
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.09128669223389352
+New effect:-0.0005997816560081048
+p value:0.8999999999999999
+
+Refute: Use a subset of data
+Estimated effect:0.09128669223389352
+New effect:0.09099358400480263
+p value:0.8
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.013975301821189348
+******************************************************************************************
+age ---> relationship
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                    
+──────(E[relationship])
+d[age]                 
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→relationship then P(relationship|age,,U) = P(relationship|age,)
+
+## Realized estimand
+b: relationship~age+age*native-country+age*gender+age*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: -0.02559353084049487
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.02559353084049487
+New effect:-0.025593586952400674
+p value:0.96
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.02559353084049487
+New effect:4.4134077210893354e-05
+p value:0.92
+
+Refute: Use a subset of data
+Estimated effect:-0.02559353084049487
+New effect:-0.025575171575911673
+p value:0.88
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 2.821209955800587e-54
+******************************************************************************************
+gender ---> relationship
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+    d                     
+─────────(E[relationship])
+d[gender]                 
+Estimand assumption 1, Unconfoundedness: If U→{gender} and U→relationship then P(relationship|gender,,U) = P(relationship|gender,)
+
+## Realized estimand
+b: relationship~gender+gender*age+gender*education+gender*workclass+gender*hours-per-week+gender*native-country+gender*marital-status+gender*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: -1.9023604745689981
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-1.9023604745689981
+New effect:-1.9023547377202825
+p value:0.94
+
+Refute: Use a Placebo Treatment
+Estimated effect:-1.9023604745689981
+New effect:-0.0009387856531185634
+p value:0.8799999999999999
+
+Refute: Use a subset of data
+Estimated effect:-1.9023604745689981
+New effect:-1.9018460180539876
+p value:0.94
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 4.484905754591337e-27
+******************************************************************************************
+marital-status ---> relationship
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                             
+─────────────────(E[relationship|age])
+d[marital-status]                     
+Estimand assumption 1, Unconfoundedness: If U→{marital-status} and U→relationship then P(relationship|marital-status,age,U) = P(relationship|marital-status,age)
+
+## Realized estimand
+b: relationship~marital-status+age+marital-status*education+marital-status*gender+marital-status*native-country+marital-status*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: -0.01683893992011165
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.01683893992011165
+New effect:-0.016839140850671664
+p value:0.94
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.01683893992011165
+New effect:-0.00030002887427525547
+p value:0.94
+
+Refute: Use a subset of data
+Estimated effect:-0.01683893992011165
+New effect:-0.016694206419384777
+p value:0.96
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 3.0163927437623623e-222
+******************************************************************************************
+education ---> relationship
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                                    
+────────────(E[relationship|ethnicity,age,native-country])
+d[education]                                              
+Estimand assumption 1, Unconfoundedness: If U→{education} and U→relationship then P(relationship|education,ethnicity,age,native-country,U) = P(relationship|education,ethnicity,age,native-country)
+
+## Realized estimand
+b: relationship~education+ethnicity+age+native-country+education*gender+education*marital-status
+Target units: ate
+
+## Estimate
+Mean value: -0.030694108527093755
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.030694108527093755
+New effect:-0.030693784018960432
+p value:0.94
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.030694108527093755
+New effect:-7.52057878704715e-05
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:-0.030694108527093755
+New effect:-0.030764200948537455
+p value:0.8799999999999999
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 9.997711733667933e-219
+******************************************************************************************
+workclass ---> relationship
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                                    
+────────────(E[relationship|marital-status,age,education])
+d[workclass]                                              
+Estimand assumption 1, Unconfoundedness: If U→{workclass} and U→relationship then P(relationship|workclass,marital-status,age,education,U) = P(relationship|workclass,marital-status,age,education)
+
+## Realized estimand
+b: relationship~workclass+marital-status+age+education+workclass*gender
+Target units: ate
+
+## Estimate
+Mean value: -0.0029576191034830224
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.0029576191034830224
+New effect:-0.0029612192891115964
+p value:0.8400000000000001
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.0029576191034830224
+New effect:0.00022225900670926445
+p value:0.98
+
+Refute: Use a subset of data
+Estimated effect:-0.0029576191034830224
+New effect:-0.0026056349845264325
+p value:0.9
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.0
+******************************************************************************************
+native-country ---> relationship
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                         
+─────────────────(E[relationship])
+d[native-country]                 
+Estimand assumption 1, Unconfoundedness: If U→{native-country} and U→relationship then P(relationship|native-country,,U) = P(relationship|native-country,)
+
+## Realized estimand
+b: relationship~native-country+native-country*age+native-country*gender+native-country*ethnicity+native-country*marital-status
+Target units: ate
+
+## Estimate
+Mean value: -0.001054013903811768
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.001054013903811768
+New effect:-0.0010539825264321535
+p value:0.94
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.001054013903811768
+New effect:-0.00010986943448537011
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:-0.001054013903811768
+New effect:-0.0010375452899698057
+p value:0.94
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.0
+******************************************************************************************
+gender ---> occupation
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+    d                   
+─────────(E[occupation])
+d[gender]               
+Estimand assumption 1, Unconfoundedness: If U→{gender} and U→occupation then P(occupation|gender,,U) = P(occupation|gender,)
+
+## Realized estimand
+b: occupation~gender+gender*age+gender*education+gender*workclass+gender*hours-per-week+gender*native-country+gender*marital-status+gender*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: 0.47703689134570304
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.47703689134570304
+New effect:0.4770324880973327
+p value:0.94
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.47703689134570304
+New effect:-0.0005416561443790613
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:0.47703689134570304
+New effect:0.47585640531512985
+p value:0.8600000000000001
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 2.8413946833328606e-05
+******************************************************************************************
+education ---> occupation
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                                  
+────────────(E[occupation|ethnicity,age,native-country])
+d[education]                                            
+Estimand assumption 1, Unconfoundedness: If U→{education} and U→occupation then P(occupation|education,ethnicity,age,native-country,U) = P(occupation|education,ethnicity,age,native-country)
+
+## Realized estimand
+b: occupation~education+ethnicity+age+native-country+education*gender+education*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.07451568309928369
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.07451568309928369
+New effect:0.07451544538318673
+p value:0.92
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.07451568309928369
+New effect:-0.0005141991759707043
+p value:1.0
+
+Refute: Use a subset of data
+Estimated effect:0.07451568309928369
+New effect:0.07478066156693097
+p value:0.8
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.005517294665088004
+******************************************************************************************
+marital-status ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                       
+─────────────────(E[income|age])
+d[marital-status]               
+Estimand assumption 1, Unconfoundedness: If U→{marital-status} and U→income then P(income|marital-status,age,U) = P(income|marital-status,age)
+
+## Realized estimand
+b: income~marital-status+age+marital-status*education+marital-status*gender+marital-status*native-country+marital-status*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: -0.022351505099697855
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.022351505099697855
+New effect:-0.022352412682119373
+p value:0.9199999999999999
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.022351505099697855
+New effect:-0.00010488069601456429
+p value:1.0
+
+Refute: Use a subset of data
+Estimated effect:-0.022351505099697855
+New effect:-0.02228330420109432
+p value:0.92
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 1.0149220612699719e-223
+******************************************************************************************
+hours-per-week ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                                                                    
+─────────────────(E[income|marital-status,ethnicity,age,education,workclass])
+d[hours-per-week]                                                            
+Estimand assumption 1, Unconfoundedness: If U→{hours-per-week} and U→income then P(income|hours-per-week,marital-status,ethnicity,age,education,workclass,U) = P(income|hours-per-week,marital-status,ethnicity,age,education,workclass)
+
+## Realized estimand
+b: income~hours-per-week+marital-status+ethnicity+age+education+workclass+hours-per-week*gender
+Target units: ate
+
+## Estimate
+Mean value: 0.004579290956997016
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.004579290956997016
+New effect:0.0045793502450256224
+p value:0.9199999999999999
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.004579290956997016
+New effect:-2.610021735370449e-05
+p value:0.8
+
+Refute: Use a subset of data
+Estimated effect:0.004579290956997016
+New effect:0.004574357683581463
+p value:0.96
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 2.4680007558521948e-23
+******************************************************************************************
+education ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                              
+────────────(E[income|ethnicity,age,native-country])
+d[education]                                        
+Estimand assumption 1, Unconfoundedness: If U→{education} and U→income then P(income|education,ethnicity,age,native-country,U) = P(income|education,ethnicity,age,native-country)
+
+## Realized estimand
+b: income~education+ethnicity+age+native-country+education*gender+education*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.038065023020998734
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.038065023020998734
+New effect:0.03806517598029418
+p value:0.96
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.038065023020998734
+New effect:-7.338691641673139e-05
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:0.038065023020998734
+New effect:0.03806125504964066
+p value:0.98
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.0
+******************************************************************************************
+age ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d              
+──────(E[income])
+d[age]           
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→income then P(income|age,,U) = P(income|age,)
+
+## Realized estimand
+b: income~age+age*native-country+age*gender+age*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: 0.007277989737886004
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.007277989737886004
+New effect:0.0072781314217540815
+p value:0.76
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.007277989737886004
+New effect:-1.0557895748108392e-05
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:0.007277989737886004
+New effect:0.007274883523412853
+p value:0.98
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 0.019757261547674567
+******************************************************************************************
+gender ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+    d               
+─────────(E[income])
+d[gender]           
+Estimand assumption 1, Unconfoundedness: If U→{gender} and U→income then P(income|gender,,U) = P(income|gender,)
+
+## Realized estimand
+b: income~gender+gender*age+gender*education+gender*workclass+gender*hours-per-week+gender*native-country+gender*marital-status+gender*ethnicity
+Target units: ate
+
+## Estimate
+Mean value: 0.1792453711514012
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.1792453711514012
+New effect:0.1792478100247607
+p value:0.96
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.1792453711514012
+New effect:-7.121923547221104e-05
+p value:0.9199999999999999
+
+Refute: Use a subset of data
+Estimated effect:0.1792453711514012
+New effect:0.17949001327399333
+p value:0.94
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 6.716557110555909e-203
+******************************************************************************************
+native-country ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                   
+─────────────────(E[income])
+d[native-country]           
+Estimand assumption 1, Unconfoundedness: If U→{native-country} and U→income then P(income|native-country,,U) = P(income|native-country,)
+
+## Realized estimand
+b: income~native-country+native-country*age+native-country*gender+native-country*ethnicity+native-country*marital-status
+Target units: ate
+
+## Estimate
+Mean value: 0.0010918069102721917
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.0010918069102721917
+New effect:0.0010919384880225059
+p value:1.0
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.0010918069102721917
+New effect:5.678292989676925e-05
+p value:0.92
+
+Refute: Use a subset of data
+Estimated effect:0.0010918069102721917
+New effect:0.0010915958594117556
+p value:1.0
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 4.102181286737181e-77
+******************************************************************************************
+relationship ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+       d                                                                      
+───────────────(E[income|marital-status,age,education,workclass,hours-per-week
+d[relationship]                                                               
+
+                        
+,gender,native-country])
+                        
+Estimand assumption 1, Unconfoundedness: If U→{relationship} and U→income then P(income|relationship,marital-status,age,education,workclass,hours-per-week,gender,native-country,U) = P(income|relationship,marital-status,age,education,workclass,hours-per-week,gender,native-country)
+
+## Realized estimand
+b: income~relationship+marital-status+age+education+workclass+hours-per-week+gender+native-country
+Target units: ate
+
+## Estimate
+Mean value: -0.02112474506173001
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.02112474506173001
+New effect:-0.02112348427820979
+p value:0.92
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.02112474506173001
+New effect:0.00017676142045462223
+p value:0.88
+
+Refute: Use a subset of data
+Estimated effect:-0.02112474506173001
+New effect:-0.02116666161237709
+p value:0.9199999999999999
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 6.615069541673584e-47
+******************************************************************************************
+workclass ---> income
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                              
+────────────(E[income|marital-status,age,education])
+d[workclass]                                        
+Estimand assumption 1, Unconfoundedness: If U→{workclass} and U→income then P(income|workclass,marital-status,age,education,U) = P(income|workclass,marital-status,age,education)
+
+## Realized estimand
+b: income~workclass+marital-status+age+education+workclass*gender
+Target units: ate
+
+## Estimate
+Mean value: -0.011086339273625123
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.011086339273625123
+New effect:-0.01108643060719193
+p value:0.8400000000000001
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.011086339273625123
+New effect:-0.00027822464670139516
+p value:0.8799999999999999
+
+Refute: Use a subset of data
+Estimated effect:-0.011086339273625123
+New effect:-0.01099216656704925
+p value:0.86
+
+***** TEST COVARIATE SIGNIFICANCE *****
+p-value: 1.4752640420043246e-132

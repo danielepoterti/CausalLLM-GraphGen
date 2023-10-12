@@ -1,0 +1,314 @@
+******************************************************************************************
+age ---> classification
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                      
+──────(E[classification])
+d[age]                   
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→classification then P(classification|age,,U) = P(classification|age,)
+
+## Realized estimand
+b: classification~age+age*gender
+Target units: ate
+
+## Estimate
+Mean value: 0.0034748569642475413
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.0034748569642475413
+New effect:0.0034758976697936072
+p value:1.0
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.0034748569642475413
+New effect:1.1942834078724208e-05
+p value:0.98
+
+Refute: Use a subset of data
+Estimated effect:0.0034748569642475413
+New effect:0.0033829751090538084
+p value:0.72
+
+******************************************************************************************
+duration ---> classification
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+     d                                         
+───────────(E[classification|age,creditamount])
+d[duration]                                    
+Estimand assumption 1, Unconfoundedness: If U→{duration} and U→classification then P(classification|duration,age,creditamount,U) = P(classification|duration,age,creditamount)
+
+## Realized estimand
+b: classification~duration+age+creditamount
+Target units: ate
+
+## Estimate
+Mean value: -0.007072988791704926
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.007072988791704926
+New effect:-0.0070765462575378725
+p value:0.8400000000000001
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.007072988791704926
+New effect:-1.814427524900908e-05
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:-0.007072988791704926
+New effect:-0.007008015235964422
+p value:0.94
+
+******************************************************************************************
+creditamount ---> duration
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+       d                        
+───────────────(E[duration|age])
+d[creditamount]                 
+Estimand assumption 1, Unconfoundedness: If U→{creditamount} and U→duration then P(duration|creditamount,age,U) = P(duration|creditamount,age)
+
+## Realized estimand
+b: duration~creditamount+age
+Target units: ate
+
+## Estimate
+Mean value: 0.0026778676765619736
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.0026778676765619736
+New effect:0.0026775133184406387
+p value:0.72
+
+Refute: Use a Placebo Treatment
+Estimated effect:0.0026778676765619736
+New effect:1.8092525476021137e-06
+p value:0.8999999999999999
+
+Refute: Use a subset of data
+Estimated effect:0.0026778676765619736
+New effect:0.00267212265812379
+p value:0.8999999999999999
+
+*************** iv.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: iv
+Estimand expression:
+ ⎡                                               -1⎤
+ ⎢    d               ⎛    d                    ⎞  ⎥
+E⎢─────────(duration)⋅⎜─────────([creditamount])⎟  ⎥
+ ⎣d[gender]           ⎝d[gender]                ⎠  ⎦
+Estimand assumption 1, As-if-random: If U→→duration then ¬(U →→{gender})
+Estimand assumption 2, Exclusion: If we remove {gender}→{creditamount}, then ¬({gender}→duration)
+
+## Realized estimand
+b: duration~creditamount+age
+Target units: ate
+
+## Estimate
+Mean value: 0.0026778676765619736
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:0.0026778676765619736
+New effect:0.0026778676765619736
+p value:2.0
+
+Refute: Use a subset of data
+Estimated effect:0.0026778676765619736
+New effect:0.0026760528829530726
+p value:0.94
+
+******************************************************************************************
+gender ---> creditamount
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+    d                     
+─────────(E[creditamount])
+d[gender]                 
+Estimand assumption 1, Unconfoundedness: If U→{gender} and U→creditamount then P(creditamount|gender,,U) = P(creditamount|gender,)
+
+## Realized estimand
+b: creditamount~gender+gender*age
+Target units: ate
+
+## Estimate
+Mean value: -567.1504673800155
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-567.1504673800155
+New effect:-566.4709412497451
+p value:1.0
+
+Refute: Use a Placebo Treatment
+Estimated effect:-567.1504673800155
+New effect:-5.0762977590802345
+p value:0.9199999999999999
+
+Refute: Use a subset of data
+Estimated effect:-567.1504673800155
+New effect:-560.1688999517229
+p value:0.88
+
+******************************************************************************************
+age ---> creditamount
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                    
+──────(E[creditamount])
+d[age]                 
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→creditamount then P(creditamount|age,,U) = P(creditamount|age,)
+
+## Realized estimand
+b: creditamount~age+age*gender
+Target units: ate
+
+## Estimate
+Mean value: 5.181866362216169
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:5.181866362216169
+New effect:5.176441026647235
+p value:0.98
+
+Refute: Use a Placebo Treatment
+Estimated effect:5.181866362216169
+New effect:1.0381231205768517
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:5.181866362216169
+New effect:4.7895033178917314
+p value:0.96
+
+******************************************************************************************
+age ---> duration
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+  d                
+──────(E[duration])
+d[age]             
+Estimand assumption 1, Unconfoundedness: If U→{age} and U→duration then P(duration|age,,U) = P(duration|age,)
+
+## Realized estimand
+b: duration~age+age*gender
+Target units: ate
+
+## Estimate
+Mean value: -0.0503122691393898
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.0503122691393898
+New effect:-0.05032552463676151
+p value:0.98
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.0503122691393898
+New effect:0.0020394803148499107
+p value:0.92
+
+Refute: Use a subset of data
+Estimated effect:-0.0503122691393898
+New effect:-0.04993307684872235
+p value:1.0
+
+******************************************************************************************
+gender ---> classification
+******************************************************************************************
+*************** backdoor.linear_regression ***************
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: EstimandType.NONPARAMETRIC_ATE
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+    d                       
+─────────(E[classification])
+d[gender]                   
+Estimand assumption 1, Unconfoundedness: If U→{gender} and U→classification then P(classification|gender,,U) = P(classification|gender,)
+
+## Realized estimand
+b: classification~gender+gender*age
+Target units: ate
+
+## Estimate
+Mean value: -0.055235657333180255
+
+********** REFUTE ESTIMATE **********
+Refute: Add a random common cause
+Estimated effect:-0.055235657333180255
+New effect:-0.055189067293726704
+p value:0.88
+
+Refute: Use a Placebo Treatment
+Estimated effect:-0.055235657333180255
+New effect:-0.0025134573882698687
+p value:0.96
+
+Refute: Use a subset of data
+Estimated effect:-0.055235657333180255
+New effect:-0.05479896442307714
+p value:0.8999999999999999
+
