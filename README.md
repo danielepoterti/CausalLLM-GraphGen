@@ -1,2 +1,2 @@
-# SARA
- Structure Analysis and Reasoning Architecture
+# Bridging Causal Theory and LLMs: A User-Centric Approach to Causal Graph Generation
+Causality plays a significant role in understanding cause-and-effect relationships, particularly in the context of data-driven decision-making. This research introduces an approach to causal graph generation that combines the power of Large Language Models (LLMs) with classical algorithms from causal theory. In contrast to recent related works that seek to exclude the involvement of domain experts, our method places them at the forefront of the process. We present a novel pipeline that streamlines and enhances expert validation by providing robust causal graph proposals. These proposals are enriched with transparent reports that blend foundational causal theory reasoning with explanations from LLMs. This user-centric approach aims to foster a more comprehensive and reliable causal graph generation process.
